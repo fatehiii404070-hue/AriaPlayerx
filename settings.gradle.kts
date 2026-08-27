@@ -15,6 +15,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "AriaPlayer"
+rootProject.name = "AriaPlayerx"
 
 include(":app")
