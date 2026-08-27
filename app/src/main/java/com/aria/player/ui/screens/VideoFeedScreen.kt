@@ -11,19 +11,37 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
+import com.aria.player.data.model.Movie
 
 
 @Composable
 fun VideoFeedScreen() {
 
+
     val movies = listOf(
-        "Sample Movie 1",
-        "Sample Movie 2",
-        "Sample Movie 3"
+
+        Movie(
+            id = 1,
+            title = "Sample Movie 1",
+            filePath = ""
+        ),
+
+        Movie(
+            id = 2,
+            title = "Sample Movie 2",
+            filePath = ""
+        ),
+
+        Movie(
+            id = 3,
+            title = "Sample Movie 3",
+            filePath = ""
+        )
     )
 
 
     val pagerState = rememberPagerState(
+        initialPage = 0,
         pageCount = {
             movies.size
         }
@@ -31,38 +49,58 @@ fun VideoFeedScreen() {
 
 
     VerticalPager(
+
         state = pagerState,
-        modifier = Modifier.fillMaxSize()
+
+        modifier = Modifier
+            .fillMaxSize()
+
     ) { page ->
 
 
         VideoItem(
-            title = movies[page]
+
+            movie = movies[page]
+
         )
 
     }
+
 }
 
 
 
 @Composable
 fun VideoItem(
-    title: String
+
+    movie: Movie
+
 ) {
 
+
     Box(
+
         modifier = Modifier
             .fillMaxSize()
             .background(Color.Black),
+
         contentAlignment = Alignment.Center
-    ) {
+
+    ){
 
 
         Text(
-            text = title,
+
+            text = movie.title,
+
             color = Color.White,
+
             fontSize = 30.sp
+
         )
 
+
     }
+
+
 }
