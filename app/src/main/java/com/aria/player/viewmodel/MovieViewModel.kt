@@ -10,25 +10,37 @@ class MovieViewModel : ViewModel() {
 
     private val repository = MovieRepository()
 
-    private val _movies = MutableStateFlow<List<Movie>>(emptyList())
+    private val _movies =
+        MutableStateFlow<List<Movie>>(emptyList())
 
     val movies: StateFlow<List<Movie>> = _movies
 
-    init {
-        loadMovies()
+
+    fun addMovie(movie: Movie) {
+        repository.addMovie(movie)
+        refresh()
     }
 
-    private fun loadMovies() {
-        _movies.value = repository.getMovies()
+
+    fun removeMovie(id: Int) {
+        repository.removeMovie(id)
+        refresh()
     }
+
 
     fun likeMovie(id: Int) {
-        repository.toggleLike(id)
-        loadMovies()
+        repository.likeMovie(id)
+        refresh()
     }
 
+
     fun saveMovie(id: Int) {
-        repository.toggleSave(id)
-        loadMovies()
+        repository.saveMovie(id)
+        refresh()
+    }
+
+
+    private fun refresh() {
+        _movies.value = repository.getMovies()
     }
 }
