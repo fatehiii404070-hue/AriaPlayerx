@@ -18,7 +18,6 @@ import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -51,8 +50,9 @@ fun AriaPlayerHome() {
             .background(
                 Brush.verticalGradient(
                     colors = listOf(
-                        Color.DarkGray,
-                        Color.Black
+                        Color(0xFF5A5A5A),
+                        Color(0xFF3A3A3A),
+                        Color(0xFF6B6B6B)
                     )
                 )
             ),
@@ -69,7 +69,7 @@ fun AriaPlayerHome() {
             Icon(
                 imageVector = Icons.Default.Movie,
                 contentDescription = "Movie Logo",
-                tint = Color.Green,
+                tint = Color(0xFF00C853),
                 modifier = Modifier.size(120.dp)
             )
 
