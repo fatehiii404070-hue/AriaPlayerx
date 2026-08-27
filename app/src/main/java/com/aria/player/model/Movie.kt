@@ -1,12 +1,9 @@
-package com.aria.player.data.model
+package com.aria.player.model
 
 data class Movie(
-    val id: Long,
+    val id: Int,
     val title: String,
-    val filePath: String,
-    val duration: Long = 0L,
-    val size: Long = 0L,
-    val isLiked: Boolean = false,
-    val isSaved: Boolean = false,
-    val lastPosition: Long = 0L
+    val uri: String,
+    var isLiked: Boolean = false,
+    var isSaved: Boolean = false
 )
