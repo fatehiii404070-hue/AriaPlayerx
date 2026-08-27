@@ -14,35 +14,21 @@ class MovieViewModel : ViewModel() {
 
     val movies: StateFlow<List<Movie>> = _movies
 
+    init {
+        loadMovies()
+    }
 
-    fun addMovie(movie: Movie) {
-
-        repository.addMovie(movie)
-
+    private fun loadMovies() {
         _movies.value = repository.getMovies()
     }
 
-
-    fun removeMovie(movie: Movie) {
-
-        repository.removeMovie(movie)
-
-        _movies.value = repository.getMovies()
+    fun likeMovie(id: Int) {
+        repository.toggleLike(id)
+        loadMovies()
     }
 
-
-    fun likeMovie(movie: Movie) {
-
-        repository.likeMovie(movie)
-
-        _movies.value = repository.getMovies()
-    }
-
-
-    fun saveMovie(movie: Movie) {
-
-        repository.saveMovie(movie)
-
-        _movies.value = repository.getMovies()
+    fun saveMovie(id: Int) {
+        repository.toggleSave(id)
+        loadMovies()
     }
 }
