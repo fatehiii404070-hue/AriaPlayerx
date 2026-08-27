@@ -4,32 +4,37 @@ import com.aria.player.model.Movie
 
 class MovieRepository {
 
-    private val movies = mutableListOf(
-        Movie(
-            id = 1,
-            title = "Sample Video 1",
-            path = ""
-        ),
-        Movie(
-            id = 2,
-            title = "Sample Video 2",
-            path = ""
-        )
-    )
+    private val movies = mutableListOf<Movie>()
 
     fun getMovies(): List<Movie> {
         return movies
     }
 
-    fun toggleLike(movieId: Int) {
-        val movie = movies.find { it.id == movieId }
+    fun addMovie(movie: Movie) {
+        movies.add(movie)
+    }
+
+    fun removeMovie(movieId: Int) {
+        movies.removeIf {
+            it.id == movieId
+        }
+    }
+
+    fun likeMovie(movieId: Int) {
+        val movie = movies.find {
+            it.id == movieId
+        }
+
         movie?.let {
             it.isLiked = !it.isLiked
         }
     }
 
-    fun toggleSave(movieId: Int) {
-        val movie = movies.find { it.id == movieId }
+    fun saveMovie(movieId: Int) {
+        val movie = movies.find {
+            it.id == movieId
+        }
+
         movie?.let {
             it.isSaved = !it.isSaved
         }
